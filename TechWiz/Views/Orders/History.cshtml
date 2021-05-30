@@ -1,0 +1,93 @@
+﻿@model TechWizProject.Models.Order
+
+@{
+    ViewData["Title"] = "History";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@*<link href='https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css' rel='stylesheet'>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css' rel='stylesheet'>*@
+<style>
+
+    .card {
+        background: rgba( 255, 255, 255, 0.45 );
+        box-shadow: 0 8px 32px 0 rgb(31 38 135 / 37%);
+        backdrop-filter: blur( 4.0px );
+        -webkit-backdrop-filter: blur( 4.0px );
+        position: relative;
+        display: flex;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        min-width: 0;
+        word-wrap: break-word;
+        border: none;
+        border-radius: 20px;
+        margin-top: 25px;
+    }
+
+
+    .card-img-top {
+        border-radius: 20px;
+        height: 200px;
+        width: 100%;
+    }
+
+    .card-body {
+        -ms-flex: 1 1 auto;
+        flex: 1 1 auto;
+        padding: 1.25rem;
+    }
+
+    .card-title {
+        margin-bottom: .75rem;
+    }
+
+    p {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 13px;
+        color: #666;
+    }
+
+    .card-body div a:first-child {
+        float: left;
+    }
+
+    .card-body div a:nth-child(2) {
+        float: left;
+        margin-left: 15px;
+    }
+</style>
+<h1>History</h1>
+
+<div>
+    <h4>Order</h4>
+    <hr />
+   
+
+
+    <div class="container">
+        <div class="row">
+            @foreach (var item in ViewBag.HistoryOrders)
+            {
+                <div class="col-lg-6 col-md-8 col-sm-12" style="width: 15rem;">
+                    <div class=" card">
+                        <img src="~/images/@item.Image" class="card-img-top" alt="orderhistory" height="250px">
+                        <div class="card-body">
+                            <h5 class="card-title">@item.NameRestaurant</h5>
+                            <p class="card-text">@item.Time</p>
+                            <p class="card-text">@item.State</p>
+
+                            <div class="text-center"><a class="btn btn-success" asp-action="preorder" asp-route-OrderId="@item.OrderId">Pre-Order</a><a class="btn btn-warning" asp-action="index" asp-controller="Restaurants" asp-area="admin">Rating</a> <b> TOTAL : </b><span class="text-danger h5">@item.Total $</span>&nbsp; @item.CountOrder items </div>
+
+                        </div>
+                    </div>
+                </div>
+            }
+
+
+        </div>
+    </div>
+    <div>
+        @*<a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |*@
+        <a asp-action="Index">Back to List</a>
+    </div>

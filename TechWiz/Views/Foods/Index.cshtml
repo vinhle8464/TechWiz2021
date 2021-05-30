@@ -1,0 +1,27 @@
+﻿@model IEnumerable<TechWizProject.Models.Food>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="new-food">
+        <h3>@ViewBag.titlePage</h3>
+        <div class="row">
+            @foreach (var item in Model)                   
+            {
+                <div class="col-2 my-2">
+                    <a asp-controller="Restaurant" asp-action="Details" asp-route-idRes="@item.RestaurantId">
+                        <div class="box-food">
+                            <div class="box-food__img">
+                                <img src="~/foods/@Html.DisplayFor(modelItem => item.Images)" alt=""/>
+                            </div>
+                            <div class="food-title">@Html.DisplayFor(modelItem => item.Name)</div>
+                        </div>
+                    </a>
+                </div>
+            }
+        </div>
+    </div>
+</div>

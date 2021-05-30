@@ -1,0 +1,81 @@
+﻿@{ ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml"; }
+
+<div class="container restaurant-page">
+    <img src="~/Restaurant/@ViewBag.restaurantDetail.Logo" class="rounded mx-auto d-block mx-50" alt="">
+    <h1 class="text-center">@ViewBag.restaurantDetail.Name</h1>
+    <p class="text-center">Address: @ViewBag.restaurantDetail.Addr</p>
+</div>
+<nav>
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+        <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Menu</a>
+        <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Contact</a>
+        <a class="nav-item nav-link" id="nav-comment-tab" data-toggle="tab" href="#nav-comment" role="tab" aria-controls="nav-comment" aria-selected="false">Comment</a>
+    </div>
+</nav>
+<div class="tab-content" id="nav-tabContent">
+    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+        <div class="container">
+            <div class="row">
+                @foreach (var item in ViewBag.listFood)
+                {
+                    <div class="col-lg-3 col-md-4 col-sm-6" style="width: 15rem;">
+                        <div class="card">
+                            <img src="~/Foods/@item.Photo" class="card-img-top" alt="@item.Photo" height="250">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between">
+                                    <h5 class="card-title">@item.FoodName</h5>
+                                    <h5 class="card-price">@item.Price</h5>
+                                </div>
+                                <p class="card-text text-overflow">@item.Desc</p>
+                                <button class="btn btn-primary btn-block" data-idFood="@item.FoodId"><i class="fa fa-shopping-cart" aria-hidden="true"> Add to cart</i></button>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">xvasc.</div>
+    <div class="tab-pane fade" id="nav-comment" role="tabpanel" aria-labelledby="nav-comment-tab">
+        <div class="container">
+            @if (ViewBag.cmt != null)
+            {
+<div class="row">
+    <div class="card mx50" style="width: 18rem;">
+        <div class="card-body">
+            <div>
+                <img src="~/images/@ViewBag.cmt.Photo" class="mx-50" alt="">
+            </div>
+            <div></div>
+            <h5 class="card-title">@ViewBag.cmt.FullName comment</h5>
+            <h6 class="card-subtitle mb-2 text-muted">@ViewBag.cmt.CreateAt.ToString("dd/MM/yyyy")</h6>
+            <p class="card-text">@ViewBag.cmt.Comment</p>
+            <div class="container-fluid">
+                <div class="d-flex justify-content-center">
+                    <i class="fa fa-star cl-star"></i>
+                    <i class="fa fa-star cl-star"></i>
+                    <i class="fa fa-star-half-o cl-star"></i>
+                    <i class="fa fa-star-o cl-star"></i>
+                    <i class="fa fa-star-o cl-star"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>}
+        </div>
+    </div>
+</div>
+<script src="~/js/vendor/jquery-1.11.0.min.js"></script>
+<script src="~/js/vendor/jquery.gmap3.min.js"></script>
+<script src="~/js/popper.min.js"></script>
+<script src="~/js/bootstrap.min.js"></script>
+<script src="~/js/plugins.js"></script>
+<script src="~/js/main.js"></script>
+
+<script>
+    $(document).on("click", ".btn-block", function(evt) {
+        evt.preventDefault();
+        alert($(this).data("idFood"));
+    })
+</script>

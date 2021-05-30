@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="new-restaurant">
+        <h3>Restaurants</h3>
+        <div class="row">
+            @foreach (var restaurant in ViewBag.restaurants)
+            {
+                <a asp-controller="Restaurant" asp-action="Details" asp-route-idRes="@restaurant.Restaurant.Id">
+                    <div class="col-lg-3 col-md-4col-sm-6" style="width: 15rem">
+                        <div class="card">
+                            <img src="~/Restaurant/@restaurant.Restaurant.Logo"
+                                 class="card-img-top"
+                                 alt="..."
+                                 height="250px" />
+                            <div class="card-body">
+                                <h5 class="card-title mb-5" style="min-height: 80px">@restaurant.Restaurant.Name</h5>
+                                <div class="card-tags-group row">
+                                    <a href="#" class="col btn card-tags">@restaurant.Tag</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            }
+        </div>
+    </div>
+</div>
+

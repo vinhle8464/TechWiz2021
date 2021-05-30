@@ -1,0 +1,83 @@
+﻿@using TechWizProject.Areas.Admin.Models
+
+@{
+    ViewData["Title"] = "index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="category mb-2">
+        <div class="d-flex justify-content-around thumble-group">
+            @foreach (var category in ViewBag.categories)
+            {
+                <a asp-controller="Foods" asp-action="SearchWithCategory" asp-route-idCategory="@category.Id">
+                    <div class="thumble">
+                        <img src="~/Categories/@category.Icon"
+                             class="thumble-logo"
+                             alt="@category.Icon"
+                             height="100px"
+                             width="100px"
+                             style="border-radius: 50px" />
+                        <div class="thumble-title">
+                            <h5 class="text-center text-ellipsis">@category.Name</h5>
+                        </div>
+                    </div>
+                </a>
+            }
+        </div>
+    </div>
+    <hr />
+    <div class="new-food">
+        <h3>New Products</h3>
+        <div class="row">
+            @foreach (var food in ViewBag.foods)
+            {
+                <div class="col-2 my-2">
+                    <a asp-controller="Restaurant" asp-action="Details" asp-route-idRes="@food.RestaurantId">
+                        <div class="box-food">
+                            <div class="box-food__img">
+                                <img src="~/foods/@food.Images" alt="" />
+                            </div>
+                            <div class="food-title">@food.Name</div>
+                        </div>
+                    </a>
+                </div>
+            }
+        </div>
+        <div class="row">
+            <div class="col-12 text-center">
+                <a asp-controller="Foods" asp-action="Index" class="btn btn-primary mt-2">View more foods</a>
+            </div>
+        </div>
+    </div>
+    <hr />
+    <div class="new-restaurant">
+        <h3>Restaurants</h3>
+        <div class="row">
+            @foreach (var restaurant in ViewBag.restaurants)
+            {
+                <a asp-controller="Restaurant" asp-action="Details" asp-route-idRes="@restaurant.Restaurant.Id">
+                    <div class="col-lg-3 col-md-4 col-sm-6" style="width: 15rem">
+                        <div class="card">
+                            <img src="~/Restaurant/@restaurant.Restaurant.Logo"
+                                 class="card-img-top"
+                                 alt="..."
+                                 height="250" />
+                            <div class="card-body">
+                                <h5 class="card-title mb-5" style="min-height: 80px">@restaurant.Restaurant.Name</h5>
+                                <div class="card-tags-group row">
+                                    <a href="#" class="col btn card-tags">@restaurant.Tag</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            }
+        </div>
+        <div class="row">
+            <div class="col-12 text-center">
+                <a asp-controller="Restaurant" asp-action="Index" class="btn btn-primary my-3">View more restaurant</a>
+            </div>
+        </div>
+    </div>
+</div>

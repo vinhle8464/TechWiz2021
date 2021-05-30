@@ -1,0 +1,117 @@
+.card{
+    background: rgba( 255, 255, 255, 0.45 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 4.0px );
+    -webkit-backdrop-filter: blur( 4.0px );
+    border-radius: 10px;
+    border: none;
+    border-radius: 20px;
+    margin-top: 25px;
+}
+.card-img-top{
+    border-radius: 20px;
+    height: 200px;
+}
+
+.card-tags{
+    display: inline-block;
+    padding: 3px 6px;
+    width: auto;
+    background: darkgray;
+    border-radius: 5px; 
+    margin-right:2px;
+}
+.card-tags-group{
+    margin: 0 3px;
+    height: 50px;
+    overflow-x: auto;
+    display: block;
+    white-space: nowrap;
+}
+.card-tags-group >a{
+    box-shadow: none;
+}
+.mx-50{
+    margin-top: -100px;
+    border-radius: 50%!important;
+}
+.mx15{
+    margin: 15px;
+    padding: 15px;
+}
+.mx50{
+    margin-top: 100px;
+    margin-left: 10px;
+}
+.sub-title{
+    color: #9796A1;
+    font-weight: 600;
+    font-size: 1rem;
+}
+.price-title{
+    color: orange;
+    font-weight: 600;
+    font-size: 1.5rem;
+    margin-top: 20px;
+}
+.cl-star{
+    color: #FFC529;
+}
+.logo-size{
+    height: 150px;
+    width: 150px;
+}
+.card-price{
+    color: #9796A1;
+}
+.nav-pills .nav-link.active{
+    background-color: orange;
+}
+.button{
+    width: 30%;
+}
+.btn-orange{
+    background-color: orange;
+}
+.btn-orange:hover{
+    color: orange;
+    border-color: orange;
+    background-color: white;
+}
+.btn-outline-orange{
+    color: orange;
+    border-color: orange;
+}
+.btn-outline-orange:hover{
+    color: white;
+    background-color: orange;
+}
+.rated{
+    font-size: 60px;
+}
+.thumble-group{
+    overflow-x: auto;
+
+}
+.thumble{
+    width: 100px;
+    background-color: orange;
+    border-radius: 50px 50px 25px 25px;
+    margin-top: 5px;
+
+}
+.thumble-logo{
+    padding: 10px;
+    border-radius: 50px;
+}
+.thumble-title{
+    padding: 5px;
+}
+.text-ellipsis{
+    display: block;
+    width: 100px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-size: 18px;
+}
